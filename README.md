@@ -64,3 +64,7 @@ If you are in a Codespace, this is relatively safe.
 
 To get you used to working with MCP servers, which extend AI coding agents, the Context7 MCP server is pre-installed.
 This allows you to make the AI model aware of latest documentation. You can explicitly call it by asking something like `use context7 to find the latest Azure Functions documentation`.
+
+### Troubleshooting
+
+If you are running into GitHub Auth issues, it may be necessary to log in with `gh auth login`.
