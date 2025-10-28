@@ -4,6 +4,9 @@
   "features": {
     "ghcr.io/devcontainers/features/python:1": {
       "version": "3.11"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "installDirectlyFromGitHubRelease": true
     }
   },
   "postCreateCommand": "npm install -g @github/copilot && npm install -g @upstash/context7-mcp && curl -LsSf https://astral.sh/uv/install.sh | sh && export PATH=\"$HOME/.local/bin:$PATH\" && uv tool install specify-cli --from git+https://github.com/github/spec-kit.git",
