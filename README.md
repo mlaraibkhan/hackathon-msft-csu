@@ -1,13 +1,13 @@
 # hackathon-msft-csu
 
-This Codespaces comes with some great AI Tools pre-installed.
+This Codespace Repo comes with some great AI Tools pre-installed.
 
 ## GitHub Spec Kit
 
 Before coding a bunch with AI, it is important to first spec out what you want to build.
 GitHub Spec Kit helps with this and is available in the terminal.
 
-First set up Spec Kit with `specify init .`.
+First set up Spec Kit with `specify init .` in a terminal.
 
 Then you can run various commands in the terminal in order:
 
@@ -26,7 +26,7 @@ Use `/speckit.tasks` to create an actionable task list from your implementation 
 
 4. Implement
 
-Use /speckit.implement to execute all tasks and build your feature according to the plan.
+Use `/speckit.implement` to execute all tasks and build your feature according to the plan.
 
 5. Iterate!
 
