@@ -9,7 +9,27 @@ GitHub Spec Kit helps with this and is available in the terminal.
 
 First set up Spec Kit with `specify init .` in a terminal.
 
-Then you can run various commands in the terminal in order:
+Then, you can open Copilot Chat.
+
+## Copilot Chat
+
+Copilot Chat can be acccessed by toggling the chat. If you are unfamiliar with AI coding, this is a great starting point.
+
+<img width="565" height="66" alt="image" src="https://github.com/user-attachments/assets/39887cd7-704a-4d34-83f7-92acd7b1ccd7" />
+
+Make sure the chat is in "Agent" mode:
+
+<img width="688" height="145" alt="image" src="https://github.com/user-attachments/assets/12c4adfb-ab87-4345-ae76-25976bfaec31" />
+
+I generally recommend using Claude Sonnet 4.5 or GPT-5 Codex.
+
+## Using Spec Kit & Chat Together
+
+If you initialized Spec Kit properly, you can now run various slash commands inside of Copilot:
+
+<img width="709" height="325" alt="image" src="https://github.com/user-attachments/assets/2932b142-41be-4d98-9b72-9bf4cbc506fc" />
+
+Execute these prompts in order with your project idea:
 
 1. Create the spec
 Use the `/speckit.specify` command to describe what you want to build. Focus on the what and why, not the tech stack.
@@ -31,18 +51,6 @@ Use `/speckit.implement` to execute all tasks and build your feature according t
 5. Iterate!
 
 You can continue iterating on your project with Copilot Chat or Copilot CLI:
-
-## Copilot Chat
-
-Copilot Chat can be acccessed by toggling the chat. If you are unfamiliar with AI coding, this is a great starting point.
-
-<img width="565" height="66" alt="image" src="https://github.com/user-attachments/assets/39887cd7-704a-4d34-83f7-92acd7b1ccd7" />
-
-Make sure the chat is in "Agent" mode:
-
-<img width="688" height="145" alt="image" src="https://github.com/user-attachments/assets/12c4adfb-ab87-4345-ae76-25976bfaec31" />
-
-I generally recommend using Claude Sonnet 4.5 or GPT-5 Codex.
 
 ## Copilot CLI
 
