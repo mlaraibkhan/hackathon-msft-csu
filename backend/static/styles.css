@@ -565,3 +565,142 @@ body {
     width: 100%;
     margin-top: 1rem;
 }
+
+/* Scan Type Selector */
+.scan-type-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.scan-type-card {
+    position: relative;
+    cursor: pointer;
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: all 0.3s;
+}
+
+.scan-type-card input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.scan-type-card:hover {
+    border-color: var(--primary);
+    background: rgba(99, 102, 241, 0.05);
+}
+
+.scan-type-card.active {
+    border-color: var(--primary);
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.scan-type-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+}
+
+.scan-type-icon {
+    font-size: 2rem;
+}
+
+.scan-type-label {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.scan-type-desc {
+    font-size: 0.875rem;
+    color: var(--gray);
+}
+
+/* Dashboard Widgets */
+.dashboard-widgets {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.widget {
+    min-height: 300px;
+}
+
+.widget-content {
+    padding: 1rem 0;
+}
+
+.widget-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: background 0.2s;
+}
+
+.widget-item:hover {
+    background: rgba(255,255,255,0.02);
+}
+
+.widget-item:last-child {
+    border-bottom: none;
+}
+
+.widget-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.widget-icon {
+    font-size: 1.25rem;
+}
+
+.widget-value {
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+.widget-count {
+    color: var(--gray);
+    font-size: 0.875rem;
+    margin-left: 0.5rem;
+}
+
+/* Scan Target Info */
+.scan-target-info {
+    background: var(--darker);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.scan-target-info strong {
+    color: var(--gray);
+    margin-right: 0.5rem;
+}
+
+#modal-target-display {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .dashboard-widgets {
+        grid-template-columns: 1fr;
+    }
+    
+    .scan-type-selector {
+        grid-template-columns: 1fr;
+    }
+}

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CyberScope - Vulnerability Scanner</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
     <!-- Sidebar -->
@@ -89,6 +89,22 @@
                 </div>
             </div>
 
+            <div class="dashboard-widgets">
+                <div class="card widget">
+                    <div class="card-header">
+                        <h3>🔌 Top 10 Common Ports</h3>
+                    </div>
+                    <div id="common-ports-widget" class="widget-content"></div>
+                </div>
+
+                <div class="card widget">
+                    <div class="card-header">
+                        <h3>🎯 Top Vulnerabilities</h3>
+                    </div>
+                    <div id="vulnerabilities-widget" class="widget-content"></div>
+                </div>
+            </div>
+
             <div class="content-grid">
                 <div class="card">
                     <div class="card-header">
@@ -106,20 +122,54 @@
                 <h2>Create New Scan</h2>
                 <form id="scanForm" class="scan-form">
                     <div class="form-section">
-                        <h3>🎯 Target</h3>
+                        <h3>🎯 Scan Type</h3>
                         <div class="form-group">
-                            <label>IP Address</label>
-                            <input type="text" id="target" placeholder="127.0.0.1" required>
+                            <div class="scan-type-selector">
+                                <label class="scan-type-card active" data-type="ip">
+                                    <input type="radio" name="scanType" value="ip" checked>
+                                    <div class="scan-type-content">
+                                        <span class="scan-type-icon">🔌</span>
+                                        <span class="scan-type-label">IP/Port Scan</span>
+                                        <span class="scan-type-desc">Scan network ports and services</span>
+                                    </div>
+                                </label>
+                                <label class="scan-type-card" data-type="web">
+                                    <input type="radio" name="scanType" value="web">
+                                    <div class="scan-type-content">
+                                        <span class="scan-type-icon">🌐</span>
+                                        <span class="scan-type-label">Web Application Scan</span>
+                                        <span class="scan-type-desc">Scan web vulnerabilities (Coming Soon)</span>
+                                    </div>
+                                </label>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="form-section">
-                        <h3>🔍 Port Range</h3>
-                        <select id="portRange" class="form-select">
-                            <option value="top100">⚡ Quick - Top 100 (~10s)</option>
-                            <option value="top1000" selected>✨ Standard - Top 1000 (~30s)</option>
-                            <option value="all">🔍 Full - All ports (~10m)</option>
-                        </select>
+                    <div class="form-section" id="ip-scan-section">
+                        <h3>🎯 Target Configuration</h3>
+                        <div class="form-group">
+                            <label>IP Address</label>
+                            <input type="text" id="target-ip" placeholder="127.0.0.1 or 192.168.1.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Port Range</label>
+                            <select id="portRange" class="form-select">
+                                <option value="top100">⚡ Quick - Top 100 (~10s)</option>
+                                <option value="top1000" selected>✨ Standard - Top 1000 (~30s)</option>
+                                <option value="all">🔍 Full - All ports (~10m)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-section" id="web-scan-section" style="display: none;">
+                        <h3>🌐 Website URL</h3>
+                        <div class="form-group">
+                            <label>Target URL</label>
+                            <input type="url" id="target-url" placeholder="https://example.com">
+                            <small style="color: var(--gray); margin-top: 0.5rem; display: block;">
+                                Enter full URL including http:// or https://
+                            </small>
+                        </div>
                     </div>
 
                     <div class="form-actions">
@@ -142,6 +192,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Target</th>
+                            <th>Type</th>
                             <th>Status</th>
                             <th>Findings</th>
                             <th>Started</th>
@@ -170,12 +221,18 @@
                 <button onclick="closeModal()">&times;</button>
             </div>
             <div class="modal-body">
+                <div class="scan-target-info">
+                    <div>
+                        <strong>Target:</strong> 
+                        <span id="modal-target-display">-</span>
+                    </div>
+                    <div>
+                        <strong>Status:</strong> 
+                        <span id="modal-status" class="badge info">-</span>
+                    </div>
+                </div>
                 <div class="progress-container">
                     <div class="spinner"></div>
-                    <div>
-                        <div>Target: <strong id="modal-target">-</strong></div>
-                        <div>Status: <strong id="modal-status">-</strong></div>
-                    </div>
                 </div>
                 <div class="progress-bar-container">
                     <div class="progress-bar-fill" id="modal-progress-fill"></div>
@@ -207,6 +264,6 @@
         </div>
     </div>
 
-    <script src="app.js"></script>
+    <script src="/static/app.js"></script>
 </body>
 </html>
