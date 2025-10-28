@@ -1,10 +1,7 @@
 {
   "name": "Copilot CLI Dev Container",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:22-bookworm",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
   "features": {
-    "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.11"
-    },
     "ghcr.io/devcontainers/features/github-cli:1": {
       "installDirectlyFromGitHubRelease": true
     }
