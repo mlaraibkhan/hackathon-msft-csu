@@ -9,7 +9,7 @@ from src.utils.logger import logger
 
 def create_app(config=None):
     """Create and configure Flask application."""
-    app = Flask(__name__)
+    app = Flask(__name__, static_folder='../static', static_url_path='/static')
     
     # Configuration
     app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "dev-secret-key-change-in-production")
@@ -39,6 +39,12 @@ def create_app(config=None):
     @app.route("/health")
     def health():
         return {"status": "ok"}
+    
+    @app.route("/")
+    def index():
+        """Serve the new CyberScope dashboard."""
+        from flask import send_from_directory
+        return send_from_directory(app.static_folder, 'index.html')
     
     logger.info("Application created successfully")
     return app

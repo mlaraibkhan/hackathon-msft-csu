@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberScope - Vulnerability Scanner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">🛡️</div>
+            <h2>CyberScope</h2>
+        </div>
+        
+        <nav class="nav-menu">
+            <a href="#" class="nav-item active" data-page="dashboard">
+                <span class="icon">📊</span>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item" data-page="new-scan">
+                <span class="icon">🎯</span>
+                <span>New Scan</span>
+            </a>
+            <a href="#" class="nav-item" data-page="scans">
+                <span class="icon">📋</span>
+                <span>Scan History</span>
+            </a>
+            <a href="#" class="nav-item" data-page="reports">
+                <span class="icon">📄</span>
+                <span>Reports</span>
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="avatar">👤</div>
+                <div>
+                    <div class="user-name">Security Analyst</div>
+                    <div class="user-role">Admin</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="top-bar">
+            <div class="page-title" id="pageTitle">Dashboard</div>
+            <div class="top-bar-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="Search...">
+                    <span>🔍</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard -->
+        <div id="page-dashboard" class="page active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon success">✓</div>
+                    <div>
+                        <div class="stat-label">Total Scans</div>
+                        <div class="stat-value" id="stat-total">0</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon danger">⚠</div>
+                    <div>
+                        <div class="stat-label">Critical Issues</div>
+                        <div class="stat-value" id="stat-critical">0</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon warning">◉</div>
+                    <div>
+                        <div class="stat-label">Open Ports</div>
+                        <div class="stat-value" id="stat-ports">0</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon info">⏱</div>
+                    <div>
+                        <div class="stat-label">Running</div>
+                        <div class="stat-value" id="stat-running">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Recent Scans</h3>
+                        <button class="link-btn" onclick="goToPage('scans')">View All →</button>
+                    </div>
+                    <div id="recent-scans"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Scan -->
+        <div id="page-new-scan" class="page">
+            <div class="card">
+                <h2>Create New Scan</h2>
+                <form id="scanForm" class="scan-form">
+                    <div class="form-section">
+                        <h3>🎯 Target</h3>
+                        <div class="form-group">
+                            <label>IP Address</label>
+                            <input type="text" id="target" placeholder="127.0.0.1" required>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>🔍 Port Range</h3>
+                        <select id="portRange" class="form-select">
+                            <option value="top100">⚡ Quick - Top 100 (~10s)</option>
+                            <option value="top1000" selected>✨ Standard - Top 1000 (~30s)</option>
+                            <option value="all">🔍 Full - All ports (~10m)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary btn-large">🚀 Start Scan</button>
+                    </div>
+                </form>
+                <div id="alerts"></div>
+            </div>
+        </div>
+
+        <!-- Scans History -->
+        <div id="page-scans" class="page">
+            <div class="page-header">
+                <h2>Scan History</h2>
+                <button class="btn-primary" onclick="goToPage('new-scan')">+ New Scan</button>
+            </div>
+            <div class="card">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Target</th>
+                            <th>Status</th>
+                            <th>Findings</th>
+                            <th>Started</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scans-table-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Reports -->
+        <div id="page-reports" class="page">
+            <div class="card">
+                <h2>Reports</h2>
+                <div id="reports-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scan Modal -->
+    <div id="scanModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Scan Progress</h3>
+                <button onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="progress-container">
+                    <div class="spinner"></div>
+                    <div>
+                        <div>Target: <strong id="modal-target">-</strong></div>
+                        <div>Status: <strong id="modal-status">-</strong></div>
+                    </div>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" id="modal-progress-fill"></div>
+                    <span id="modal-progress-text">0%</span>
+                </div>
+                <div class="scan-logs">
+                    <h4>📋 Live Logs</h4>
+                    <div class="logs-content" id="scan-logs"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Modal -->
+    <div id="resultsModal" class="modal">
+        <div class="modal-content results-modal">
+            <div class="modal-header">
+                <h3>Scan Results</h3>
+                <button onclick="closeResultsModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="results-summary"></div>
+                <div id="results-table"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeResultsModal()">Close</button>
+                <button class="btn-primary" onclick="downloadReport()">Download</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
