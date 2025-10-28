@@ -2,6 +2,11 @@
 
 This Codespace Repo comes with some great AI Tools pre-installed.
 
+First, make sure to open the repo in a Codespace:
+
+<img width="480" height="201" alt="image" src="https://github.com/user-attachments/assets/3368867b-eb88-4c29-9ade-641b3c2d9ec3" />
+
+
 ## GitHub Spec Kit
 
 Before coding a bunch with AI, it is important to first spec out what you want to build.
