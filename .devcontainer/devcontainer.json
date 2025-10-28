@@ -15,6 +15,5 @@
     "vscode": {
       "extensions": ["GitHub.copilot", "GitHub.copilot-chat"]
     }
-  },
-  "remoteUser": "node"
+  }
 }
