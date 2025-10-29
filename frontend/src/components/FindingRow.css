@@ -1,0 +1,53 @@
+.finding-row {
+  transition: background 0.2s;
+}
+
+.state-badge,
+.severity-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.state-open {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.state-closed {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.state-filtered {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.severity-critical {
+  background: #b71c1c;
+  color: white;
+}
+
+.severity-high {
+  background: #ff5722;
+  color: white;
+}
+
+.severity-medium {
+  background: #ff9800;
+  color: white;
+}
+
+.severity-low {
+  background: #ffc107;
+  color: #333;
+}
+
+.severity-info {
+  background: #2196f3;
+  color: white;
+}

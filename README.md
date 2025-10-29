@@ -1,4 +1,97 @@
-# hackathon-msft-csu
+# Educational Vulnerability Scanner
+
+🔒 A desktop application for learning about network security through hands-on vulnerability scanning.
+
+**⚠️ For Educational Use Only**
+
+---
+
+## 🚀 Quick Start for Windows 11
+
+**New to the project? Start here:** 👉 **[WINDOWS_QUICKSTART.md](WINDOWS_QUICKSTART.md)** 👈
+
+**Full documentation:** [PROJECT_README.md](PROJECT_README.md)
+
+### Super Quick Setup
+
+1. **Install prerequisites:**
+   - Python 3.11+: https://www.python.org/downloads/
+   - Node.js 18+: https://nodejs.org/
+   - Nmap: https://nmap.org/download.html
+
+2. **Install dependencies:**
+   ```powershell
+   cd backend && pip install -r requirements.txt
+   cd ..\frontend && npm install
+   ```
+
+3. **Run the app:**
+   - Double-click `start-backend-windows.bat` (as Administrator)
+   - Double-click `start-frontend-windows.bat` (normal)
+
+That's it! The app will open automatically.
+
+---
+
+## 🎯 Project Overview
+
+This is an Electron-based desktop application that helps students and security enthusiasts learn about network vulnerabilities through interactive scanning and AI-powered explanations.
+
+### Current Status: MVP Complete ✅
+
+The application can:
+- ✅ Scan network targets (IP addresses/hostnames)
+- ✅ Detect open ports and running services
+- ✅ Display scan results in real-time
+- ✅ Show service versions and basic information
+- ✅ Handle privilege requirements for network scanning
+
+See [docs/IMPLEMENTATION_STATUS.md](docs/IMPLEMENTATION_STATUS.md) for detailed implementation status.
+
+---
+
+## 📚 Documentation
+
+- **[PROJECT_README.md](PROJECT_README.md)** - Complete guide with features, architecture, and troubleshooting
+- **[WINDOWS_QUICKSTART.md](WINDOWS_QUICKSTART.md)** - Fast setup guide for Windows 11
+- **[docs/MVP_COMPLETE.md](docs/MVP_COMPLETE.md)** - Implementation summary
+- **[docs/IMPLEMENTATION_STATUS.md](docs/IMPLEMENTATION_STATUS.md)** - Detailed task checklist
+
+---
+
+## 🔧 For Developers
+
+### Manual Start (Linux/macOS)
+```bash
+# Terminal 1:
+cd backend && python3 src/main.py
+
+# Terminal 2:
+cd frontend && npm run dev
+```
+
+### Manual Start (Windows)
+```powershell
+# Terminal 1 (as Administrator):
+cd backend
+python src/main.py
+
+# Terminal 2:
+cd frontend
+npm run dev
+```
+
+---
+
+## ⚖️ Legal Notice
+
+**🚨 AUTHORIZED USE ONLY**
+
+This tool is for educational purposes only. Only scan systems you own or have explicit written permission to test. Unauthorized port scanning may be illegal in your jurisdiction.
+
+---
+
+## 📚 AI Tools Setup
 
 This Codespace Repo comes with some great AI Tools pre-installed.
 
